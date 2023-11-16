@@ -109,7 +109,7 @@ def run():
                 st.subheader('Channel Info')
                 with st.expander(' '):
                     query='select * from channel_info where channel_name =%s'
-                    cursor_object.execute(query,(opted,))
+                    cursor_object.execute(query,opted)
                     dynamic_info=cursor_object.fetchall()
                     df=pd.DataFrame(dynamic_info)
                     st.table(df) 

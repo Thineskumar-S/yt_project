@@ -6,10 +6,10 @@ from youtube_engine import data
 
 # obtain the connection string from the server to connect via python
 
-"""
+
 connection_string="mongodb+srv://thineshkumar:Thinesh1234@practicecluster.kddvjwc.mongodb.net/"
 client = pymongo.MongoClient(connection_string)
-"""
+
 
 def load(channel_id,client):
 

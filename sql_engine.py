@@ -1,7 +1,7 @@
-#import mysql.connector
+import mysql.connector
 from mongodb_engine import extract_from_mongodb
 import pandas as pd 
-"""
+
 connection_string='youtubeproject.cwoakibr9oeh.ap-south-1.rds.amazonaws.com'
 user_name='ThineshKumar'
 password='Thinesh1234'
@@ -14,7 +14,7 @@ password=password)
 cursor_object=connection_object.cursor()
 cursor_object.execute("use youtube_project")
 connection_object.commit()
-"""
+
 
 # button to click on to load from warehouse to sql through streamlit
 def transfer_to_sql(channel_name,cursor_object,client,connection_object):
@@ -48,7 +48,7 @@ def transfer_to_sql(channel_name,cursor_object,client,connection_object):
      # video_info extraction
      for b in b_:
           video_id=b.get('video_id')
-          video_Title=b.get('channelTitle')
+          channel_Title=b.get('channelTitle')
           video_Title=b.get('title')
           description_of_video=b.get('description')
           publishedAt=b.get('publishedAt')
@@ -56,8 +56,8 @@ def transfer_to_sql(channel_name,cursor_object,client,connection_object):
           likeCount=b.get('likeCount')
           commentCount=b.get('commentCount')
           duration=b.get('duration')
-          sql = "INSERT INTO video_info (video_id,channel_Title,video_Title,description_of_video,publishedAt,viewCount,likeCount,commentCount,duration) VALUES (%s, %s, %s, %s,%s,%s,%s,%s)"
-          values = (video_id,channel_Title,video_Title,description_of_video,publishedAt,viewCount,likeCount,commentCount,duration)
+          sql = "INSERT INTO video_info (video_id,channel_Title,video_Title,description_of_video,publishedAt,viewCount,likeCount,commentCount,duration) VALUES (%s, %s, %s, %s,%s,%s,%s,%s,%s)"
+          values = (video_id, channel_Title, video_Title, description_of_video, publishedAt, viewCount, likeCount, commentCount, duration)
           cursor_object.execute(sql, values)
           connection_object.commit()
      
@@ -67,8 +67,8 @@ def transfer_to_sql(channel_name,cursor_object,client,connection_object):
      for c in c_:    
           video_id = c.get("video_id")
           comments = c.get("Comments")
-          comment_likes = c.get("comment_likes",0).get("$numberInt", 0)
-          reply_count = c.get("reply_count",0).get("$numberInt", 0)
+          comment_likes = c.get("comment_likes",0)
+          reply_count = c.get("reply_count",0)
           sql = "INSERT INTO comments_and_replies (video_id, Comments, comment_likes, reply_count) VALUES (%s, %s, %s, %s)"
           values = (video_id, comments, comment_likes, reply_count)
           cursor_object.execute(sql, values)

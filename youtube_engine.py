@@ -1,7 +1,7 @@
 from apiclient.discovery import build
 from googleapiclient.errors import HttpError
 import re
-"""
+
 #Generated API key from Google Api Services
 API_KEY = "AIzaSyDeazLgd1T6hUwdvraWC6BKv5L1bpB_pgU"
 
@@ -15,7 +15,6 @@ youtube_object = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
 
 #obtain channel_id from the user via user's input
 #channel_id="UCjWY5hREA6FFYrthD0rZNIw"
-"""
 
 #get the channel info by this function.
 def get_channel_info(channel_id):
