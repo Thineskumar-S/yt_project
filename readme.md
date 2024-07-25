@@ -1,4 +1,4 @@
-# Streamlit Channel Analytics App :rocket:
+# Youtube Channel Analytics App - using Streamlit :rocket:
 
 ## Project Description :page_facing_up:
 
